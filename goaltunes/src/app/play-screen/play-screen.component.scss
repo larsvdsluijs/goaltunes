@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Add this */
+  align-items: center;    /* Add this */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns, each taking up half the available space */
+  gap: 10px;
+  background: #1b1c1c;
+  width: 95%;
+  height: 35%;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  height: 55px;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 20px;
+  background: #5b5c5c;
+  color: #fff;
+  box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgb(93 93 93 / 23%);
+}
+
+#oponent {
+  width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
+  margin-top: 15%;
+  background-color: red;
+}
+
