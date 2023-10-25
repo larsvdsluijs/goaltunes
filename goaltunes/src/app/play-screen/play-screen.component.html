@@ -1,14 +1,9 @@
 <body>
 <div class="container">
   <div class="grid-container">
-    <button class="btn"><b>Hallo</b></button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
-    <button class="btn">Hallo</button>
+    <button *ngFor="let player of players" class="btn" (click)="playAudio(player.audio)">
+      {{ player.name }}
+    </button>
   </div>
 
   <button (click)="openDialog()" id="oponent" class="btn"><b>Tegenstander</b></button>
