@@ -45,7 +45,6 @@ export class PlayScreenComponent implements OnInit{
 
 
   playAudio(base64Data: string) {
-    console.log("Base64 Data:", base64Data); // Add this line
     const audioSrc = this.convertBase64ToAudioObjectURL(base64Data);
     const audio = new Audio(audioSrc);
     audio.play();

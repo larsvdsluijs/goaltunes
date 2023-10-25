@@ -13,13 +13,16 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
+import { PlayersListComponent } from './players-list/players-list.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayScreenComponent,
     NavbarComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    PlayersListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     FormsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
