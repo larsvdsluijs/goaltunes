@@ -3,5 +3,41 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-content: center;
 }
+
+.players-list {
+  width: 80%;
+  margin-top: 25%;
+  height: 70%;
+  overflow-y: auto;
+}
+
+mat-card {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.player-name {
+  flex-grow: 1;
+  font-size: 150%;
+}
+
+mat-icon {
+  flex-shrink: 0;
+  margin-left: 16px;
+  color: red;
+}
+
+
+
+
+
+

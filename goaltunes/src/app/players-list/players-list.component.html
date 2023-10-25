@@ -1,9 +1,10 @@
-<body>
 <div class="container">
   <div class="players-list">
-  <mat-card>
-    <mat-card-content>Simple card</mat-card-content>
-  </mat-card>
+    <mat-card *ngFor="let player of players; let i = index">
+      <div class="card-content-wrapper">
+        <div class="player-name">{{ player.name }}</div>
+        <mat-icon (click)="deletePlayer(i)">close</mat-icon>
+      </div>
+    </mat-card>
   </div>
 </div>
-</body>
