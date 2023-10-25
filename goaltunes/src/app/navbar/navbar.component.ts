@@ -12,7 +12,7 @@ export class NavbarComponent {
   constructor(public dialog: MatDialog) {
   }
 
-  openDialog(): void {
+  addPlayerDialog(): void {
     this.dialog.open(AddPlayerComponent, {
       width: '90%',
       height: '50%'

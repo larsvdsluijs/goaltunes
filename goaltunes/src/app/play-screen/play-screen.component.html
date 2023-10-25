@@ -4,6 +4,7 @@
     <button *ngFor="let player of players" class="btn" (click)="playAudio(player.audio)">
       {{ player.name }}
     </button>
+    <button id="AddButton" class="btn"><mat-icon>add</mat-icon></button>
   </div>
 
   <button (click)="openDialog()" id="oponent" class="btn"><b>Tegenstander</b></button>

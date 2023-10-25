@@ -1,2 +1,9 @@
-nav {
+nav ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: 30px;
+}
+
+nav ul li {
+  margin: 0 10px;
 }
