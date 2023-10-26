@@ -15,13 +15,14 @@ export class NavbarComponent {
     public router: Router) {
   }
 
+  isMenuOpen = false;
+
   goTo(url: string) {
     this.router.navigate([url])
+    this.isMenuOpen = false;
   }
-  addPlayerDialog(): void {
-    this.dialog.open(AddPlayerComponent, {
-      width: '90%',
-      height: '50%'
-    })
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

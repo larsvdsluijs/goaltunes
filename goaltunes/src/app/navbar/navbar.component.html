@@ -1,9 +1,15 @@
-<nav>
-  <mat-toolbar>
-    <ul>
-      <li (click)="goTo('')">Home</li>
-      <li (click)="addPlayerDialog()">Add player</li>
-      <li (click)="goTo('/players')">Players list</li>
-    </ul>
-  </mat-toolbar>
+<nav id="my-first">
+  <ul>
+    <li class="logotype">
+      <a>Atlantis</a>
+    </li>
+    <li class="burger" (click)="toggleMenu()">
+      <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+    </li>
+    <li class="menu" [class.is-open]="isMenuOpen">
+      <a (click)="goTo('')" class="menu-item">Actieve Spelers</a>
+      <a (click)="goTo('players')" class="menu-item">Speler Toevoegen</a>
+      <a (click)="goTo('')" class="menu-item">Tegenstander nummers</a>
+    </li>
+  </ul>
 </nav>
