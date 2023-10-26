@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
-import {AddPlayerComponent} from "../add-player/add-player.component";
 
 interface Player {
   name: string;
@@ -19,12 +18,6 @@ export class PlayScreenComponent implements OnInit{
     }
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    this.dialog.open(AddPlayerComponent, {
-      width: '90%',
-      height: '50%'
-    })
-  }
   fetchPlayersFromLocalstorage() {
     // Haal de array van spelers op uit localStorage
     this.players = JSON.parse(localStorage.getItem('players') || '[]');

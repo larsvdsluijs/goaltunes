@@ -5,19 +5,24 @@ mat-form-field {
 .dialog-container {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Use the entire height of the dialog */
+  height: 100%; /* Ensures the container takes the full height of the dialog */
 }
 
 .content-container {
-  overflow-y: auto; /* Add scroll if the content overflows */
-  flex-grow: 1; /* Take up all available space */
+
+  flex: 1; /* This will make the content container grow and push the actions to the bottom */
+  max-height: calc(70% - 60px);
 }
 
 mat-dialog-actions {
-  margin: 0; /* Remove default margin */
+  margin: 5%; /* Remove default margin */
+  justify-content: flex-end; /* Right-align the button in actions */
 }
 
-
+.add-file {
+  display: flex;
+  flex-direction: column;
+}
 
 .btn {
   display: inline-block;

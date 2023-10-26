@@ -7,8 +7,10 @@
         <mat-label>Player name</mat-label>
         <input matInput [(ngModel)]="playerName">
       </mat-form-field>
-      <label>Song File</label>
-      <input type="file" (change)="handleFileInput($event)">
+      <div class="add-file">
+        <label>Song File</label>
+        <input type="file" (change)="handleFileInput($event)">
+      </div>
     </div>
   </div>
 

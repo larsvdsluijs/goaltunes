@@ -1,4 +1,6 @@
 <div class="container">
+  <button class="centered-button" (click)="openDialog()">Speler toevoegen</button>
+
   <div class="players-list">
     <mat-card *ngFor="let player of players; let i = index">
       <div class="card-content-wrapper">
