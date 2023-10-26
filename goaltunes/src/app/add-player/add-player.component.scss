@@ -1,3 +1,36 @@
 mat-form-field {
   width: 100%;
 }
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Use the entire height of the dialog */
+}
+
+.content-container {
+  overflow-y: auto; /* Add scroll if the content overflows */
+  flex-grow: 1; /* Take up all available space */
+}
+
+mat-dialog-actions {
+  margin: 0; /* Remove default margin */
+}
+
+
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  height: 55px;
+  width: 100%;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 20px;
+  background: red;
+  color: #fff;
+  box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}

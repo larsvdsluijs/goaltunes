@@ -1,11 +1,18 @@
 <h1 mat-dialog-title>Add Player</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Player name</mat-label>
-    <input matInput [(ngModel)]="playerName">
-  </mat-form-field>
-  <label>Song File</label>
-  <input type="file" (change)="handleFileInput($event)">
-</div>
 
-<button (click)="addPlayerToLocalstorage()">Add</button>
+<div class="dialog-container">
+  <div class="content-container">
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Player name</mat-label>
+        <input matInput [(ngModel)]="playerName">
+      </mat-form-field>
+      <label>Song File</label>
+      <input type="file" (change)="handleFileInput($event)">
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <button class="btn" (click)="addPlayerToLocalstorage()">Add</button>
+  </mat-dialog-actions>
+</div>
