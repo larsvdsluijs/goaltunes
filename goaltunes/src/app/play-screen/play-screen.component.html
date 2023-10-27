@@ -1,6 +1,6 @@
 <div class="container">
   <div class="grid-container">
-    <ng-container *ngFor="let player of players; let idx = index">
+    <ng-container *ngFor="let player of activePlayers; let idx = index">
       <button *ngIf="currentAudioIndex !== idx" class="btn" (click)="playAudio(player.audio, idx)">
         <b>{{ player.name }}</b>
       </button>

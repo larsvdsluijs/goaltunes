@@ -3,6 +3,7 @@ import {AddPlayerComponent} from "../add-player/add-player.component";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 interface Player {
+  id: number,
   name: string;
   audio: string;
 }
@@ -13,10 +14,17 @@ interface Player {
 })
 export class PlayersListComponent implements OnInit{
   players: Player[] = [];
+  activePlayers: Player[] = [];
+  combinedPlayers: Player[] = [];
 
   constructor(public dialog: MatDialog) {}
   ngOnInit() {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
+    this.activePlayers = JSON.parse(localStorage.getItem('activePlayers') || '[]');
+    this.combinedPlayers = [...this.players, ...this.activePlayers];
+    console.log(this.players)
+    console.log(this.activePlayers)
+    console.log(this.combinedPlayers)
   }
 
   deletePlayer(index: number) {

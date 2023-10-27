@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 interface Player {
+  id: number
   name: string;
   audio: string;
 }
@@ -32,13 +33,17 @@ export class AddPlayerComponent implements OnInit{
 
       reader.onload = (event: any) => {
         const base64String = event.target.result.split(',')[1];
+
+        // Retrieve current players from localStorage, add the new player, and then store it again
+        const currentPlayers: Player[] = JSON.parse(localStorage.getItem('players') || '[]');
+
         // Create a new player object
         const newPlayer: Player = {
+          id: currentPlayers.length + 1,
           name: this.playerName,
           audio: base64String
         };
-        // Retrieve current players from localStorage, add the new player, and then store it again
-        const currentPlayers: Player[] = JSON.parse(localStorage.getItem('players') || '[]');
+
         currentPlayers.push(newPlayer);
         localStorage.setItem('players', JSON.stringify(currentPlayers));
       };

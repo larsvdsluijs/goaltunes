@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 interface Player {
+  id: number,
   name: string;
   audio: string;
 }
@@ -13,6 +14,7 @@ interface Player {
 })
 export class PlayScreenComponent implements OnInit {
   players: Player[] = [];
+  activePlayers: Player[] = [];
   oponentSongs = [];
   oponentSongPlaying = false;
   audio: HTMLAudioElement | null = null;
@@ -22,6 +24,7 @@ export class PlayScreenComponent implements OnInit {
 
   ngOnInit(): void {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
+    this.activePlayers = JSON.parse(localStorage.getItem('activePlayers') || '[]');
     this.oponentSongs = JSON.parse(localStorage.getItem('oponentSongs') || '[]');
   }
   convertBase64ToAudioObjectURL(base64Data: string): string {

@@ -4,7 +4,7 @@
   <button class="centered-button" (click)="openDialog()">Speler toevoegen</button>
 
   <div class="players-list">
-    <mat-card *ngFor="let player of players; let i = index">
+    <mat-card *ngFor="let player of combinedPlayers; let i = index">
       <div class="card-content-wrapper">
         <div class="player-name">{{ player.name }}</div>
         <mat-icon (click)="deletePlayer(i)">close</mat-icon>
