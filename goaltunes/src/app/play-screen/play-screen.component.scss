@@ -33,7 +33,7 @@
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-#danger-color {
+.danger-color {
   background-color: red;
 }
 
@@ -50,6 +50,11 @@ width: 9%;
 #oponent {
   width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
   margin-top: 15%;
-  background-color: red;
+  background-color: blue;
+}
+
+#oponent-stop {
+  width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
+  margin-top: 15%;
 }
 

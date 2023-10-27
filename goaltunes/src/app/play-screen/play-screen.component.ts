@@ -13,19 +13,17 @@ interface Player {
 })
 export class PlayScreenComponent implements OnInit {
   players: Player[] = [];
+  oponentSongs = [];
+  oponentSongPlaying = false;
   audio: HTMLAudioElement | null = null;
   currentAudioIndex: number | null = null; // Added this property to track the index of the currently playing audio
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.fetchPlayersFromLocalstorage();
-  }
-
-  fetchPlayersFromLocalstorage(): void {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
+    this.oponentSongs = JSON.parse(localStorage.getItem('oponentSongs') || '[]');
   }
-
   convertBase64ToAudioObjectURL(base64Data: string): string {
     const byteCharacters = atob(base64Data);
     const byteNumbers: number[] = [];
@@ -50,15 +48,32 @@ export class PlayScreenComponent implements OnInit {
     // Listen for when the audio ends
     this.audio.addEventListener('ended', () => {
       this.currentAudioIndex = null; // Reset the index
+      this.oponentSongPlaying = false;
     });
   }
-
   stopAudio(): void {
     if (this.audio) {
       this.audio.pause();
       this.audio.currentTime = 0;
       this.audio = null;
       this.currentAudioIndex = null; // Reset the index when the audio is stopped
+      this.oponentSongPlaying = false;
     }
   }
+
+  playOponentSong() {
+    // Check if there are any songs to play
+    if (this.oponentSongs.length === 0) {
+      console.error('No opponent songs available to play.');
+      return;
+    }
+
+    // Generate a random index from the oponentSongs array
+    const randomIndex = Math.floor(Math.random() * this.oponentSongs.length);
+
+    this.oponentSongPlaying = true;
+    // Play the song at the randomly generated index
+    this.playAudio(this.oponentSongs[randomIndex], randomIndex);
+  }
+
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AddPlayerComponent} from "../add-player/add-player.component";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 interface Player {
   name: string;
@@ -28,10 +28,16 @@ export class PlayersListComponent implements OnInit{
   }
 
   openDialog() {
-    this.dialog.open(AddPlayerComponent, {
+    const dialogRef = this.dialog.open(AddPlayerComponent, {
       width: '90%',
-      height: '50%'
-    })
+      height: '50%',
+      disableClose: true
+    });
+
+    // Fetch players from local storage when the dialog is closed.
+    dialogRef.afterClosed().subscribe(() => {
+      this.players = JSON.parse(localStorage.getItem('players') || '[]');
+    });
   }
 
   protected readonly open = open;

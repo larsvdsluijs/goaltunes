@@ -3,15 +3,11 @@
 </div>
 
 
-<h1 mat-dialog-title>Speler Toevoegen</h1>
+<h1 mat-dialog-title>Nummer Toevoegen</h1>
 
 <div class="dialog-container">
   <div class="content-container">
     <div mat-dialog-content>
-      <mat-form-field>
-        <mat-label>Spelers naam</mat-label>
-        <input matInput [(ngModel)]="playerName">
-      </mat-form-field>
       <div class="add-file">
         <label>Audio bestand</label>
         <input type="file" accept="audio/*" (change)="handleFileInput($event)">
@@ -20,6 +16,6 @@
   </div>
 
   <mat-dialog-actions>
-    <button class="btn" (click)="addPlayerToLocalstorage()">Toevoegen</button>
+    <button class="btn" (click)="addSongToLocalStorage()">Toevoegen</button>
   </mat-dialog-actions>
 </div>

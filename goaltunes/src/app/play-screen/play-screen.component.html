@@ -4,11 +4,12 @@
       <button *ngIf="currentAudioIndex !== idx" class="btn" (click)="playAudio(player.audio, idx)">
         <b>{{ player.name }}</b>
       </button>
-      <button *ngIf="currentAudioIndex === idx" id="danger-color" class="btn" (click)="stopAudio()">
+      <button *ngIf="currentAudioIndex === idx"  class="btn danger-color" (click)="stopAudio()">
         Stop
       </button>
     </ng-container>
   </div>
 
-  <button id="oponent" class="btn"><b>Tegenstander</b></button>
+  <button *ngIf="!oponentSongPlaying" id="oponent" class="btn" (click)="playOponentSong()"><b>Tegenstander</b></button>
+  <button *ngIf="oponentSongPlaying" id="oponent-stop" class="btn danger-color" (click)="stopAudio()"><b>Stop</b></button>
 </div>

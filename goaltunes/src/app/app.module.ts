@@ -15,6 +15,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import { PlayersListComponent } from './players-list/players-list.component';
 import {MatCardModule} from "@angular/material/card";
+import { OponentSongsComponent } from './oponent-songs/oponent-songs.component';
+import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {MatCardModule} from "@angular/material/card";
     PlayScreenComponent,
     NavbarComponent,
     AddPlayerComponent,
-    PlayersListComponent
+    PlayersListComponent,
+    OponentSongsComponent,
+    OponentSongDialogComponent
   ],
   imports: [
     BrowserModule,

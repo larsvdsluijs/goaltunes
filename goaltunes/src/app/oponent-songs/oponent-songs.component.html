@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Nummers tegenstander</h1>
+
+  <button class="centered-button" (click)="openDialog()">Nummer toevoegen</button>
+
+  <div class="players-list">
+    <mat-card *ngFor="let s of songs; let i = index">
+      <div class="card-content-wrapper">
+        <div class="player-name">{{ i + 1 }}</div>
+        <mat-icon (click)="deleteSong(i)">close</mat-icon>
+      </div>
+    </mat-card>
+  </div>
+</div>
