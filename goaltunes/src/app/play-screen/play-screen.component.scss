@@ -11,8 +11,8 @@
   grid-template-columns: repeat(2, 1fr); /* Two columns, each taking up half the available space */
   gap: 10px;
   background: #1b1c1c;
-  width: 95%;
-  height: 35%;
+  width: 90%;
+  height: min-content;
   padding: 10px;
   border-radius: 10px;
   margin-top: 10%;
@@ -31,6 +31,10 @@
   color: #fff;
   box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#danger-color {
+  background-color: red;
 }
 
 .btn:hover {
