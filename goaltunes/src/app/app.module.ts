@@ -17,6 +17,8 @@ import { PlayersListComponent } from './players-list/players-list.component';
 import {MatCardModule} from "@angular/material/card";
 import { OponentSongsComponent } from './oponent-songs/oponent-songs.component';
 import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-dialog.component';
+import { SelectActivePlayersComponent } from './select-active-players/select-active-players.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-d
     AddPlayerComponent,
     PlayersListComponent,
     OponentSongsComponent,
-    OponentSongDialogComponent
+    OponentSongDialogComponent,
+    SelectActivePlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-d
     FormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

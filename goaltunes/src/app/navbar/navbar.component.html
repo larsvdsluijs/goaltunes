@@ -7,7 +7,7 @@
       <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
     </li>
     <li class="menu" [class.is-open]="isMenuOpen">
-      <a (click)="goTo('')" class="menu-item">Actieve Spelers</a>
+      <a (click)="openDialog()" class="menu-item">Actieve Spelers</a>
       <a (click)="goTo('players')" class="menu-item">Speler Toevoegen</a>
       <a (click)="goTo('oponent')" class="menu-item">Tegenstander nummers</a>
     </li>

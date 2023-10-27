@@ -1,0 +1,39 @@
+<div class="close-icon-container">
+  <mat-icon id="closeButton" (click)="closeDialog()">close</mat-icon>
+</div>
+
+
+<h1 mat-dialog-title>Actieve Spelers Selecteren</h1>
+
+<div class="dialog-container">
+  <div class="content-container">
+    <div mat-dialog-content>
+      <div class="player-amount-section">
+        <label>Max Aantal Actieve Spelers</label>
+        <mat-form-field class="number-input" appearance="outline">
+          <input matInput type="number" (input)="setMaxPlayers($event)" value="{{maxPlayerAmount}}">
+        </mat-form-field>
+      </div>
+      <!-- Add player dropdown -->
+      <mat-form-field appearance="outline">
+        <mat-label>Speler Toevoegen</mat-label>
+        <mat-select [(value)]="selectedPlayer" (selectionChange)="onPlayerSelected()">
+          <mat-option *ngFor="let player of players" [value]="player">
+            {{ player.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <label>Actieve Spelers</label>
+      <div class="players-list">
+        <mat-card *ngFor="let player of activePlayers; let i = index">
+          <div class="card-content-wrapper">
+            <div class="player-name">{{ player.name }}</div>
+            <mat-icon (click)="removeActivePlayer(player)">close</mat-icon>
+          </div>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+</div>
