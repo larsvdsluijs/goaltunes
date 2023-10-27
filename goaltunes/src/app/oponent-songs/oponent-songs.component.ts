@@ -32,7 +32,7 @@ export class OponentSongsComponent implements OnInit{
   openDialog() {
     const dialogRef = this.dialog.open(OponentSongDialogComponent, {
       width: '90%',
-      height: '30%'
+      height: '40%'
     });
 
     // Fetch players from local storage when the dialog is closed.

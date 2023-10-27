@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 interface Player {
   id: number,
@@ -20,7 +21,8 @@ export class PlayScreenComponent implements OnInit {
   audio: HTMLAudioElement | null = null;
   currentAudioIndex: number | null = null; // Added this property to track the index of the currently playing audio
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+              public snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
@@ -69,7 +71,9 @@ export class PlayScreenComponent implements OnInit {
   playOponentSong() {
     // Check if there are any songs to play
     if (this.oponentSongs.length === 0) {
-      console.error('No opponent songs available to play.');
+      this.snackbar.open("Geen nummers toegevoegd!", "Begrepen", {
+        duration: 5000
+      })
       return;
     }
 

@@ -17,6 +17,7 @@ export class SelectActivePlayersComponent implements OnInit{
   activePlayers: Player[] = [];
   selectedPlayer: Player | null = null;
   maxPlayerAmount: number = 0;
+  needsReload = false;
 
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class SelectActivePlayersComponent implements OnInit{
 
           // Save the updated this.players back to localStorage
           localStorage.setItem('players', JSON.stringify(this.players));
+          this.needsReload = true;
         } catch (error) {
           if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
             this.openSnackBar("Opslag limiet bereikt!.", "Begrepen");
@@ -80,10 +82,13 @@ export class SelectActivePlayersComponent implements OnInit{
       this.players.push(playerToRemove);
       // Save the updated players array back to localStorage
       localStorage.setItem('players', JSON.stringify(this.players));
+      this.needsReload = true;
     }
   }
 
   closeDialog() {
+    if(this.needsReload)
+      window.location.reload();
     this.dialogRef.close();
   }
 
