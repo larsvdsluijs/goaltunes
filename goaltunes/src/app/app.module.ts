@@ -19,6 +19,7 @@ import { OponentSongsComponent } from './oponent-songs/oponent-songs.component';
 import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-dialog.component';
 import { SelectActivePlayersComponent } from './select-active-players/select-active-players.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatCardModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    MatSnackBar
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 interface Player {
   id: number,
@@ -29,7 +30,9 @@ export class SelectActivePlayersComponent implements OnInit{
       this.maxPlayerAmount = 0;
     }
   }
-  constructor(public dialogRef: MatDialogRef<SelectActivePlayersComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<SelectActivePlayersComponent>,
+    private _snackBar: MatSnackBar) {}
   setMaxPlayers(event: any) {
     this.maxPlayerAmount = event.target.value;
     localStorage.setItem('maxPlayers', this.maxPlayerAmount.toString())
@@ -37,21 +40,30 @@ export class SelectActivePlayersComponent implements OnInit{
 
   onPlayerSelected() {
     if (this.selectedPlayer) {
-      // Check if the player is already in the activePlayers list
-      const isPlayerActive = this.activePlayers.some(player => player.id === this.selectedPlayer?.id);
-
       // If not, add to activePlayers and update localStorage
-      if (!isPlayerActive && this.activePlayers.length < this.maxPlayerAmount) {
+      if (this.activePlayers.length < this.maxPlayerAmount) {
         this.activePlayers.push(this.selectedPlayer);
-        localStorage.setItem('activePlayers', JSON.stringify(this.activePlayers));
+        try {
+          localStorage.setItem('activePlayers', JSON.stringify(this.activePlayers));
 
-        // Remove player from this.players array
-        this.players = this.players.filter(player => player.id !== this.selectedPlayer?.id);
-        // Save the updated this.players back to localStorage
-        localStorage.setItem('players', JSON.stringify(this.players));
+          // Remove player from this.players array
+          this.players = this.players.filter(player => player.id !== this.selectedPlayer?.id);
+
+          // Save the updated this.players back to localStorage
+          localStorage.setItem('players', JSON.stringify(this.players));
+        } catch (error) {
+          if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
+            this.openSnackBar("Opslag limiet bereikt!.", "Begrepen");
+          } else {
+            console.error('An unexpected error occurred:', error);
+          }
+        }
+      } else {
+        this.openSnackBar("Maximale actieve spelers aantal bereikt", "Begrepen");
       }
     }
   }
+
 
   removeActivePlayer(playerToRemove: Player) {
     // Find the index of the player in the activePlayers array
@@ -71,10 +83,15 @@ export class SelectActivePlayersComponent implements OnInit{
     }
   }
 
-
-
   closeDialog() {
     this.dialogRef.close();
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000
+    });
+  }
+
 
 }

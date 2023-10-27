@@ -19,20 +19,33 @@ export class PlayersListComponent implements OnInit{
 
   constructor(public dialog: MatDialog) {}
   ngOnInit() {
+    this.setCombinedPlayers();
+  }
+
+  setCombinedPlayers() {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
     this.activePlayers = JSON.parse(localStorage.getItem('activePlayers') || '[]');
     this.combinedPlayers = [...this.players, ...this.activePlayers];
-    console.log(this.players)
-    console.log(this.activePlayers)
-    console.log(this.combinedPlayers)
   }
 
   deletePlayer(index: number) {
-    // Remove the player from the array based on the index
-    this.players.splice(index, 1);
+    const playerToDelete = this.combinedPlayers[index];
 
-    // Update the players in localStorage
-    localStorage.setItem('players', JSON.stringify(this.players));
+    // Check if the player is in the players array or activePlayers array
+    const playerIndexInPlayers = this.players.findIndex(player => player.name === playerToDelete.name && player.audio === playerToDelete.audio);
+    const playerIndexInActivePlayers = this.activePlayers.findIndex(player => player.name === playerToDelete.name && player.audio === playerToDelete.audio);
+
+    // Remove the player based on where it is found
+    if (playerIndexInPlayers !== -1) {
+      this.players.splice(playerIndexInPlayers, 1);
+      localStorage.setItem('players', JSON.stringify(this.players));
+    } else if (playerIndexInActivePlayers !== -1) {
+      this.activePlayers.splice(playerIndexInActivePlayers, 1);
+      localStorage.setItem('activePlayers', JSON.stringify(this.activePlayers));
+    }
+
+    // Update the combinedPlayers array
+    this.combinedPlayers = [...this.players, ...this.activePlayers];
   }
 
   openDialog() {
@@ -44,7 +57,7 @@ export class PlayersListComponent implements OnInit{
 
     // Fetch players from local storage when the dialog is closed.
     dialogRef.afterClosed().subscribe(() => {
-      this.players = JSON.parse(localStorage.getItem('players') || '[]');
+      this.setCombinedPlayers();
     });
   }
 

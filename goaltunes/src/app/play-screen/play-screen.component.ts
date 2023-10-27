@@ -43,6 +43,8 @@ export class PlayScreenComponent implements OnInit {
   playAudio(base64Data: string, index: number): void { // Updated method signature to include index
     this.stopAudio();
 
+    this.oponentSongPlaying = false;
+
     const audioSrc = this.convertBase64ToAudioObjectURL(base64Data);
     this.audio = new Audio(audioSrc);
     this.audio.play();
@@ -71,12 +73,23 @@ export class PlayScreenComponent implements OnInit {
       return;
     }
 
+    this.stopAudio();
+
     // Generate a random index from the oponentSongs array
     const randomIndex = Math.floor(Math.random() * this.oponentSongs.length);
 
+    const audioSrc = this.convertBase64ToAudioObjectURL(this.oponentSongs[randomIndex]);
+    this.audio = new Audio(audioSrc);
+    this.audio.play();
     this.oponentSongPlaying = true;
+
+    // Listen for when the audio ends
+    this.audio.addEventListener('ended', () => {
+      this.currentAudioIndex = null; // Reset the index
+      this.oponentSongPlaying = false;
+    });
+
     // Play the song at the randomly generated index
-    this.playAudio(this.oponentSongs[randomIndex], randomIndex);
   }
 
 }

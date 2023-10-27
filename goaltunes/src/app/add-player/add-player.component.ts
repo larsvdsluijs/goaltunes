@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 interface Player {
   id: number
@@ -14,11 +15,12 @@ interface Player {
 export class AddPlayerComponent implements OnInit{
 
   playerName: string = '';
-  playerAudio = null;
   players = [];
   selectedFile: File | null = null;
   ngOnInit() {}
-  constructor(public dialogRef: MatDialogRef<AddPlayerComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<AddPlayerComponent>,
+    public snackbar: MatSnackBar) {}
 
   handleFileInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -28,13 +30,17 @@ export class AddPlayerComponent implements OnInit{
   }
 
   addPlayerToLocalstorage() {
+    if(this.playerName === '' || this.playerName === undefined) {
+      this.snackbar.open("Naam mag niet leeg zijn!", "begrepen")
+      return;
+    }
     if (this.selectedFile) {
       const reader = new FileReader();
 
       reader.onload = (event: any) => {
         const base64String = event.target.result.split(',')[1];
 
-        // Retrieve current players from localStorage, add the new player, and then store it again
+        // Retrieve current players from localStorage
         const currentPlayers: Player[] = JSON.parse(localStorage.getItem('players') || '[]');
 
         // Create a new player object
@@ -45,15 +51,26 @@ export class AddPlayerComponent implements OnInit{
         };
 
         currentPlayers.push(newPlayer);
-        localStorage.setItem('players', JSON.stringify(currentPlayers));
+
+        try {
+          localStorage.setItem('players', JSON.stringify(currentPlayers));
+          // this.closeDialog();
+        } catch (error) {
+          if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
+            // Handle the error, for example show a message to the user or notify them in some way
+            this.snackbar.open("Opslag limiet bereikt!", "Begrepen",{
+              duration: 5000
+            });
+          } else {
+            console.error('An unexpected error occurred:', error);
+          }
+        }
       };
 
       reader.readAsDataURL(this.selectedFile);
-      this.closeDialog();
-    } else {
-
     }
   }
+
 
   closeDialog() {
     this.dialogRef.close();

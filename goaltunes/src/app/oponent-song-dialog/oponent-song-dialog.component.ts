@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 interface Player {
   name: string;
@@ -12,13 +13,12 @@ interface Player {
 })
 export class OponentSongDialogComponent implements OnInit {
 
-  playerName: string = '';
-  playerAudio = null;
   oponentSongs = [];
   selectedFile: File | null = null;
   ngOnInit() {
   }
-  constructor(public dialogRef: MatDialogRef<OponentSongDialogComponent>) {}
+  constructor(public dialogRef: MatDialogRef<OponentSongDialogComponent>,
+              public snackbar: MatSnackBar) {}
 
   handleFileInput(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -38,7 +38,21 @@ export class OponentSongDialogComponent implements OnInit {
         // Retrieve current players from localStorage, add the new player, and then store it again
         const currentSongs = JSON.parse(localStorage.getItem('oponentSongs') || '[]');
         currentSongs.push(newSong);
-        localStorage.setItem('oponentSongs', JSON.stringify(currentSongs));
+
+        try {
+          localStorage.setItem('oponentSongs', JSON.stringify(currentSongs));
+          this.closeDialog();
+        } catch (error) {
+          if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
+            // Handle the error, for example show a message to the user or notify them in some way
+            this.snackbar.open("Opslag limiet bereikt!", "Begrepen",{
+              duration: 5000
+            });
+          } else {
+            console.error('An unexpected error occurred:', error);
+          }
+        }
+
       };
 
       reader.readAsDataURL(this.selectedFile);

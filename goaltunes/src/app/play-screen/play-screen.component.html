@@ -1,14 +1,16 @@
 <div class="container">
-  <div class="grid-container">
+  <div class="grid-container" *ngIf="activePlayers.length > 0">
     <ng-container *ngFor="let player of activePlayers; let idx = index">
       <button *ngIf="currentAudioIndex !== idx" class="btn" (click)="playAudio(player.audio, idx)">
         <b>{{ player.name }}</b>
       </button>
-      <button *ngIf="currentAudioIndex === idx"  class="btn danger-color" (click)="stopAudio()">
+      <button *ngIf="currentAudioIndex === idx" class="btn danger-color" (click)="stopAudio()">
         Stop
       </button>
     </ng-container>
   </div>
+
+  <h1 *ngIf="activePlayers.length <= 0">Geen Actieve Spelers</h1>
 
   <button *ngIf="!oponentSongPlaying" id="oponent" class="btn" (click)="playOponentSong()"><b>Tegenstander</b></button>
   <button *ngIf="oponentSongPlaying" id="oponent-stop" class="btn danger-color" (click)="stopAudio()"><b>Stop</b></button>
