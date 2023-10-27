@@ -28,7 +28,7 @@ export class SelectActivePlayersComponent implements OnInit{
     if (storedValue) {
       this.maxPlayerAmount = parseInt(storedValue);
     } else {
-      this.maxPlayerAmount = 0;
+      this.maxPlayerAmount = 8;
     }
   }
   constructor(

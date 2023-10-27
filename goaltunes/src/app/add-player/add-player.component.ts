@@ -45,7 +45,7 @@ export class AddPlayerComponent implements OnInit{
 
         // Create a new player object
         const newPlayer: Player = {
-          id: currentPlayers.length + 1,
+          id: Date.now() + Math.floor(Math.random() * 1000),
           name: this.playerName,
           audio: base64String
         };

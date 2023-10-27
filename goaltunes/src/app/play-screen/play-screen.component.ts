@@ -92,8 +92,6 @@ export class PlayScreenComponent implements OnInit {
       this.currentAudioIndex = null; // Reset the index
       this.oponentSongPlaying = false;
     });
-
-    // Play the song at the randomly generated index
   }
 
 }

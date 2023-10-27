@@ -1,11 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-
-interface Player {
-  name: string;
-  audio: string;
-}
 @Component({
   selector: 'app-oponent-song-dialog',
   templateUrl: './oponent-song-dialog.component.html',
