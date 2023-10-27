@@ -54,7 +54,7 @@ export class AddPlayerComponent implements OnInit{
 
         try {
           localStorage.setItem('players', JSON.stringify(currentPlayers));
-          // this.closeDialog();
+          this.closeDialog();
         } catch (error) {
           if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
             // Handle the error, for example show a message to the user or notify them in some way
