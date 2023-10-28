@@ -7,7 +7,8 @@ import {OponentSongsComponent} from "./oponent-songs/oponent-songs.component";
 const routes: Routes = [
   { path: '', component: PlayScreenComponent},
   { path: 'players', component: PlayersListComponent},
-  { path: 'oponent', component: OponentSongsComponent}
+  { path: 'oponent', component: OponentSongsComponent},
+  { path: '*', redirectTo: ''}
 ];
 
 @NgModule({
