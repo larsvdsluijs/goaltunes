@@ -2,6 +2,11 @@ $menuHeight: 60px;
 $menuBreakpoint: 768px;
 
 #my-first {
+
+  img {
+    margin-left: 25%;
+  }
+
   ul {
     position: relative;
     margin: 0;

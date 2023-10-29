@@ -20,6 +20,7 @@ import { OponentSongDialogComponent } from './oponent-song-dialog/oponent-song-d
 import { SelectActivePlayersComponent } from './select-active-players/select-active-players.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    NgOptimizedImage
   ],
   providers: [
     MatSnackBar
