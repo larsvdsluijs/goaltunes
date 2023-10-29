@@ -42,7 +42,7 @@ export class PlayScreenComponent implements OnInit {
     return URL.createObjectURL(blob);
   }
 
-  playAudio(base64Data: string, index: number): void { // Updated method signature to include index
+  playAudio(base64Data: string, index: number): void {
     this.stopAudio();
 
     this.oponentSongPlaying = false;
