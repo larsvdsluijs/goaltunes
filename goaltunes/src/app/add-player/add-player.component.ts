@@ -43,7 +43,6 @@ export class AddPlayerComponent implements OnInit{
         // Retrieve current players from localStorage
         const currentPlayers: Player[] = JSON.parse(localStorage.getItem('players') || '[]');
 
-        // Create a new player object
         const newPlayer: Player = {
           id: Date.now() + Math.floor(Math.random() * 1000),
           name: this.playerName,
