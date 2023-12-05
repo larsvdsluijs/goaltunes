@@ -42,19 +42,19 @@
 }
 
 #AddButton {
-width: 9%;
+  width: 9%;
   border-radius: 100%;
 }
 
 #oponent {
   width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
-  margin-top: 15%;
+  margin-top: 100px;
   background-color: blue;
 }
 
 #oponent-stop {
   width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
-  margin-top: 15%;
+  margin-top: 100px;
 }
 
 h1 {
