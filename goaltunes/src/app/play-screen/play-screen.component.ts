@@ -17,6 +17,7 @@ export class PlayScreenComponent implements OnInit {
   players: Player[] = [];
   activePlayers: Player[] = [];
   oponentSongs = [];
+  shuffledSongs = [];
   oponentSongPlaying = false;
   audio: HTMLAudioElement | null = null;
   currentAudioIndex: number | null = null; // Added this property to track the index of the currently playing audio
@@ -73,16 +74,28 @@ export class PlayScreenComponent implements OnInit {
     if (this.oponentSongs.length === 0) {
       this.snackbar.open("Geen nummers toegevoegd!", "Begrepen", {
         duration: 5000
-      })
+      });
       return;
+    }
+
+    // Check if shuffledSongs is undefined or empty, then refill and shuffle it
+    if (!this.shuffledSongs || this.shuffledSongs.length === 0) {
+      this.shuffledSongs = [...this.oponentSongs]; // Copy the array
+      this.shuffleArray(this.shuffledSongs); // Shuffle the copy
     }
 
     this.stopAudio();
 
-    // Generate a random index from the oponentSongs array
-    const randomIndex = Math.floor(Math.random() * this.oponentSongs.length);
+    // Get the last song from the shuffled array
+    const song = this.shuffledSongs.pop();
 
-    const audioSrc = this.convertBase64ToAudioObjectURL(this.oponentSongs[randomIndex]);
+    if (song === undefined) {
+      // Handle the case when shuffledSongs is empty
+      // Possibly refill the list or show an error message
+      return;
+    }
+
+    const audioSrc = this.convertBase64ToAudioObjectURL(song);
     this.audio = new Audio(audioSrc);
     this.audio.play();
     this.oponentSongPlaying = true;
@@ -93,5 +106,14 @@ export class PlayScreenComponent implements OnInit {
       this.oponentSongPlaying = false;
     });
   }
+
+// Function to shuffle an array
+  shuffleArray(array: any) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
 
 }
