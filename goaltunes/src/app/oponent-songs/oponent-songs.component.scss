@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 h1 {
-  color: white;
+    color: var(--text-color);
 }
 
 .centered-button {
@@ -30,7 +30,7 @@ h1 {
   width: 80%;
   height: 60%;
   overflow-y: auto;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 
@@ -56,6 +56,7 @@ mat-icon {
   flex-shrink: 0;
   margin-left: 16px;
   color: red;
+  cursor: pointer;
 }
 
 

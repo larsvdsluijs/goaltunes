@@ -43,6 +43,9 @@ export class PlayScreenComponent implements OnInit {
     return URL.createObjectURL(blob);
   }
 
+  /**
+   * Function for playing an audio file in the browser
+   */
   playAudio(base64Data: string, index: number): void {
     this.stopAudio();
 
@@ -59,6 +62,10 @@ export class PlayScreenComponent implements OnInit {
       this.oponentSongPlaying = false;
     });
   }
+
+  /**
+   * Function for stopping an audio file that is playing
+   */
   stopAudio(): void {
     if (this.audio) {
       this.audio.pause();
@@ -69,6 +76,9 @@ export class PlayScreenComponent implements OnInit {
     }
   }
 
+  /**
+   * Function for playing a song of the oponent
+   */
   playOponentSong() {
     // Check if there are any songs to play
     if (this.oponentSongs.length === 0) {
@@ -91,7 +101,6 @@ export class PlayScreenComponent implements OnInit {
 
     if (song === undefined) {
       // Handle the case when shuffledSongs is empty
-      // Possibly refill the list or show an error message
       return;
     }
 
@@ -107,7 +116,9 @@ export class PlayScreenComponent implements OnInit {
     });
   }
 
-// Function to shuffle an array
+  /**
+   * Function to shuffle an array
+   */
   shuffleArray(array: any) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

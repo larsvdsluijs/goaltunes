@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns, each taking up half the available space */
   gap: 10px;
-  background: #1b1c1c;
+  background: var(--grid-color);
   width: 90%;
   height: min-content;
   padding: 10px;
@@ -27,9 +27,8 @@
   border-radius: 3px;
   font-weight: 400;
   font-size: 20px;
-  background: #5b5c5c;
-  color: #fff;
-  box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+  background: var(--play-screen-button-color);
+  color: var(--text-color);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -39,6 +38,7 @@
 
 .danger-color {
   background-color: red;
+  color: var(--stop-text-color);
 }
 
 #AddButton {
@@ -50,11 +50,13 @@
   width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
   margin-top: 100px;
   background-color: blue;
+  color: var(--stop-text-color);
 }
 
 #oponent-stop {
   width: calc(100% - 20px);  /* 10px left padding + 10px right padding */
   margin-top: 100px;
+  color:  var(--stop-text-color);
 }
 
 h1 {

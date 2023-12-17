@@ -1,11 +1,30 @@
 
+/* Light mode */
+:root {
+  --background-color: #E2E5EC;
+  --grid-color: #ffffff;
+  --play-screen-button-color: #DEDEDE;
+  --text-color: #000000;
+  --stop-text-color: #ffffff;
+  /* Andere light mode variabelen */
+}
+
+/* Dark mode */
+[data-theme='dark'] {
+  --background-color: #303232;
+  --grid-color: #000000;
+  --text-color: #ffffff;
+  --play-screen-button-color: #5b5c5c;
+  --stop-text-color: #ffffff;
+}
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   position: relative;
-  background-color: #303232;
+  background-color: var(--background-color);
 }
 
 app-root {
@@ -14,5 +33,7 @@ app-root {
   width: 100%;
 }
 
-html, body { height: 100%; }
+html, body { height: 100%;
+overflow-y: hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

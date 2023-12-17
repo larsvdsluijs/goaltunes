@@ -16,33 +16,20 @@ export class SelectActivePlayersComponent implements OnInit{
   players: Player[] = [];
   activePlayers: Player[] = [];
   selectedPlayer: Player | null = null;
-  maxPlayerAmount: number = 0;
   needsReload = false;
 
 
   ngOnInit() {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');
     this.activePlayers = JSON.parse(localStorage.getItem('activePlayers') || '[]');
-
-    const storedValue = localStorage.getItem('maxPlayers');
-    if (storedValue) {
-      this.maxPlayerAmount = parseInt(storedValue);
-    } else {
-      this.maxPlayerAmount = 8;
-    }
   }
   constructor(
     public dialogRef: MatDialogRef<SelectActivePlayersComponent>,
     private _snackBar: MatSnackBar) {}
-  setMaxPlayers(event: any) {
-    this.maxPlayerAmount = event.target.value;
-    localStorage.setItem('maxPlayers', this.maxPlayerAmount.toString())
-  }
 
   onPlayerSelected() {
     if (this.selectedPlayer) {
       // If not, add to activePlayers and update localStorage
-      if (this.activePlayers.length < this.maxPlayerAmount) {
         this.activePlayers.push(this.selectedPlayer);
         try {
           localStorage.setItem('activePlayers', JSON.stringify(this.activePlayers));
@@ -58,10 +45,8 @@ export class SelectActivePlayersComponent implements OnInit{
             this.openSnackBar("Opslag limiet bereikt!.", "Begrepen");
           } else {
             console.error('An unexpected error occurred:', error);
-          }
+
         }
-      } else {
-        this.openSnackBar("Maximale actieve spelers aantal bereikt", "Begrepen");
       }
     }
   }

@@ -1,3 +1,5 @@
+
+
 /* Assuming your dialog has a relative position */
 .mat-dialog-container {
   position: relative;
@@ -62,9 +64,8 @@ label {
 
 .players-list {
   width: 100%;
-  max-height: 33vh;
+  max-height: 50vh;
   overflow-y: auto;
-  margin-top: 5%;
 }
 
 mat-card {
@@ -89,6 +90,7 @@ mat-icon {
   flex-shrink: 0;
   margin-left: 16px;
   color: red;
+  cursor: pointer;
 }
 
 #closeButton {
