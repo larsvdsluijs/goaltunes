@@ -1,13 +1,13 @@
 <body>
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
-<!--&lt;!&ndash; dark mode button &ndash;&gt;-->
-<!--<button *ngIf="theme === 'light'" class="theme-switch dark" (click)="toggleTheme()" mat-fab color="red" aria-label="Example icon button with a delete icon">-->
-<!--  <mat-icon>dark_mode</mat-icon>-->
-<!--</button>-->
+<!-- dark mode button -->
+<button *ngIf="theme === 'light'" class="theme-switch dark" (click)="toggleTheme()" mat-fab color="red" aria-label="Example icon button with a delete icon">
+  <mat-icon>dark_mode</mat-icon>
+</button>
 
-<!--&lt;!&ndash; light mode button &ndash;&gt;-->
-<!--<button *ngIf="theme === 'dark'" class="theme-switch light" (click)="toggleTheme()" mat-fab color="red" aria-label="Example icon button with a delete icon">-->
-<!--  <mat-icon>light_mode</mat-icon>-->
-<!--</button>-->
+<!-- light mode button -->
+<button *ngIf="theme === 'dark'" class="theme-switch light" (click)="toggleTheme()" mat-fab color="red" aria-label="Example icon button with a delete icon">
+  <mat-icon>light_mode</mat-icon>
+</button>
 </body>
