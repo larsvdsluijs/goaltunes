@@ -55,7 +55,7 @@ $menuBreakpoint: 768px;
       &.is-open {
         display: block;
         position: absolute;
-        top: #{$menuHeight + 0.7};
+        top: #{$menuHeight + 0.8};
         background: #CC0C0C;
         width: 100%;
         z-index: 1000;
