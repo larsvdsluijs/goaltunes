@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Player} from "../models/player";
@@ -8,12 +8,12 @@ import {Player} from "../models/player";
   templateUrl: './add-player.component.html',
   styleUrls: ['./add-player.component.scss']
 })
-export class AddPlayerComponent implements OnInit{
+export class AddPlayerComponent {
 
   playerName: string = '';
   players = [];
   selectedFile: File | null = null;
-  ngOnInit() {}
+
   constructor(
     public dialogRef: MatDialogRef<AddPlayerComponent>,
     public snackbar: MatSnackBar) {}
@@ -52,7 +52,7 @@ export class AddPlayerComponent implements OnInit{
           this.closeDialog();
         } catch (error) {
           if (error instanceof DOMException && error.code === 22) { // 22 is QuotaExceededError
-            // Handle the error, for example show a message to the user or notify them in some way
+            // Handle the error
             this.snackbar.open("Opslag limiet bereikt!", "Begrepen",{
               duration: 5000
             });
