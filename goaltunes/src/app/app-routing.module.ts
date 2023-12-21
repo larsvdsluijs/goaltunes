@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayScreenComponent} from "./play-screen/play-screen.component";
 import {PlayersListComponent} from "./players-list/players-list.component";
 import {OponentSongsComponent} from "./oponent-songs/oponent-songs.component";
+import {EditLayoutComponent} from "./edit-layout/edit-layout.component";
 
 const routes: Routes = [
   { path: '', component: PlayScreenComponent},
   { path: 'players', component: PlayersListComponent},
   { path: 'oponent', component: OponentSongsComponent},
+  { path: 'layout', component: EditLayoutComponent},
   { path: '*', redirectTo: ''}
 ];
 

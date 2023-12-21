@@ -1,12 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddPlayerComponent} from "../add-player/add-player.component";
 import {OponentSongDialogComponent} from "../oponent-song-dialog/oponent-song-dialog.component";
-
-interface Player {
-  name: string;
-  audio: string;
-}
 @Component({
   selector: 'app-oponent-songs',
   templateUrl: './oponent-songs.component.html',
@@ -40,6 +34,4 @@ export class OponentSongsComponent implements OnInit{
       this.songs = JSON.parse(localStorage.getItem('oponentSongs') || '[]');
     });
   }
-
-  protected readonly open = open;
 }

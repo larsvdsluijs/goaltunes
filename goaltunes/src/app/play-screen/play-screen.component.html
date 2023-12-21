@@ -13,5 +13,5 @@
   <h1 *ngIf="activePlayers.length <= 0">Geen Actieve Spelers</h1>
 
   <button *ngIf="!oponentSongPlaying" id="oponent" class="btn" (click)="playOponentSong()"><b>Tegenstander</b></button>
-  <button *ngIf="oponentSongPlaying" id="oponent-stop" class="btn danger-color" (click)="stopAudio()"><b>Stop</b></button>
+  <button *ngIf="oponentSongPlaying" id="oponentStop" class="btn danger-color" (click)="stopAudio()"><b>Stop</b></button>
 </div>

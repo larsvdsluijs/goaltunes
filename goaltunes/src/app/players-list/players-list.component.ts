@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AddPlayerComponent} from "../add-player/add-player.component";
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
+import {Player} from "../models/player";
 
-interface Player {
-  id: number,
-  name: string;
-  audio: string;
-}
 @Component({
   selector: 'app-players-list',
   templateUrl: './players-list.component.html',

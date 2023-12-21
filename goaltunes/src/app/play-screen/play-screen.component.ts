@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {MatSnackBar} from "@angular/material/snack-bar";
-
-interface Player {
-  id: number,
-  name: string;
-  audio: string;
-}
+import {Player} from "../models/player";
 
 @Component({
   selector: 'app-play-screen',

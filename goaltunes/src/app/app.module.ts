@@ -21,6 +21,7 @@ import { SelectActivePlayersComponent } from './select-active-players/select-act
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {NgOptimizedImage} from "@angular/common";
+import { EditLayoutComponent } from './edit-layout/edit-layout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {NgOptimizedImage} from "@angular/common";
     PlayersListComponent,
     OponentSongsComponent,
     OponentSongDialogComponent,
-    SelectActivePlayersComponent
+    SelectActivePlayersComponent,
+    EditLayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Player} from "../models/player";
 
-interface Player {
-  id: number
-  name: string;
-  audio: string;
-}
 @Component({
   selector: 'app-add-player',
   templateUrl: './add-player.component.html',
@@ -67,6 +63,10 @@ export class AddPlayerComponent implements OnInit{
       };
 
       reader.readAsDataURL(this.selectedFile);
+    } else {
+      this.snackbar.open("Je moet een file toevoegen!", "Begrepen", {
+        duration: 5000
+      })
     }
   }
 

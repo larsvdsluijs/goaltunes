@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Indeling Bewerken</h1>
+  <div class="grid-container" *ngIf="activePlayers.length > 0">
+    <ng-container *ngFor="let player of activePlayers; let idx = index">
+      <button *ngIf="selectedPlayerIndex !== idx" class="btn" (click)="switchPlayers(idx)">
+        <b>{{ player.name }}</b>
+      </button>
+      <button *ngIf="selectedPlayerIndex === idx" class="btn danger-color" (click)="switchPlayers(idx)">
+        {{ player.name }}<mat-icon>sync</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+
+  <h1 *ngIf="activePlayers.length <= 0">Geen Actieve Spelers</h1>
+</div>

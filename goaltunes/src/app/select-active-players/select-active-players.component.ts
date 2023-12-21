@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Player} from "../models/player";
 
-interface Player {
-  id: number,
-  name: string;
-  audio: string;
-}
 @Component({
   selector: 'app-select-active-players',
   templateUrl: './select-active-players.component.html',
@@ -17,7 +13,6 @@ export class SelectActivePlayersComponent implements OnInit{
   activePlayers: Player[] = [];
   selectedPlayer: Player | null = null;
   needsReload = false;
-
 
   ngOnInit() {
     this.players = JSON.parse(localStorage.getItem('players') || '[]');

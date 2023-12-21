@@ -53,7 +53,9 @@ export class OponentSongDialogComponent implements OnInit {
       reader.readAsDataURL(this.selectedFile);
       this.closeDialog();
     } else {
-
+      this.snackbar.open("Je moet een file toevoegen!", "Begrepen", {
+        duration: 5000
+      })
     }
   }
 
