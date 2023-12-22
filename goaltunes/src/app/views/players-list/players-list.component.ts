@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AddPlayerComponent} from "../add-player/add-player.component";
 import {MatDialog} from '@angular/material/dialog';
-import {Player} from "../models/player";
+import {Player} from "../../models/player";
 
 @Component({
   selector: 'app-players-list',
